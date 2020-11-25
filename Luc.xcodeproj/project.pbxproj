@@ -12,6 +12,13 @@
 		2628AD9B256E317E00966E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2628AD9A256E317E00966E4F /* Assets.xcassets */; };
 		2628AD9E256E317E00966E4F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2628AD9C256E317E00966E4F /* MainMenu.xib */; };
 		2628ADA1256E317E00966E4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2628ADA0256E317E00966E4F /* main.m */; };
+		2628ADAB256E333000966E4F /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2628ADAA256E333000966E4F /* GameView.m */; };
+		2628ADAD256E37B500966E4F /* DefaultShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2628ADAC256E37B500966E4F /* DefaultShader.metal */; };
+		2628ADB2256E424600966E4F /* RendererCore.h in Sources */ = {isa = PBXBuildFile; fileRef = 2628ADB1256E424600966E4F /* RendererCore.h */; };
+		26859EF3256E862D003E71E8 /* DefaultShaderClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF2256E862D003E71E8 /* DefaultShaderClass.m */; };
+		26859EF5256E8787003E71E8 /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF4256E8787003E71E8 /* Shader.m */; };
+		26859EF8256E8BD0003E71E8 /* ShaderLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */; };
+		26DCB197256E42FB0034B370 /* RendererCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DCB196256E42FB0034B370 /* RendererCore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,17 @@
 		2628AD9F256E317E00966E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2628ADA0256E317E00966E4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2628ADA2256E317E00966E4F /* Luc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Luc.entitlements; sourceTree = "<group>"; };
+		2628ADA8256E31E400966E4F /* GameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		2628ADAA256E333000966E4F /* GameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		2628ADAC256E37B500966E4F /* DefaultShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DefaultShader.metal; sourceTree = "<group>"; };
+		2628ADB1256E424600966E4F /* RendererCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendererCore.h; sourceTree = "<group>"; };
+		26859EEE256E8476003E71E8 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		26859EF1256E857D003E71E8 /* DefaultShaderClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultShaderClass.h; sourceTree = "<group>"; };
+		26859EF2256E862D003E71E8 /* DefaultShaderClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultShaderClass.m; sourceTree = "<group>"; };
+		26859EF4256E8787003E71E8 /* Shader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shader.m; sourceTree = "<group>"; };
+		26859EF6256E8B9B003E71E8 /* ShaderLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderLibrary.h; sourceTree = "<group>"; };
+		26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShaderLibrary.m; sourceTree = "<group>"; };
+		26DCB196256E42FB0034B370 /* RendererCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendererCore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,16 +74,67 @@
 		2628AD93256E317A00966E4F /* Luc */ = {
 			isa = PBXGroup;
 			children = (
-				2628AD94256E317A00966E4F /* AppDelegate.h */,
-				2628AD95256E317A00966E4F /* AppDelegate.m */,
-				2628AD9A256E317E00966E4F /* Assets.xcassets */,
-				2628AD9C256E317E00966E4F /* MainMenu.xib */,
+				26859EED256E8386003E71E8 /* Wrappers */,
+				2628ADB0256E421900966E4F /* Core */,
+				2628ADAF256E41F200966E4F /* View */,
+				2628ADAE256E41DA00966E4F /* Shaders */,
+				2628ADA9256E321400966E4F /* Misc Files */,
 				2628AD9F256E317E00966E4F /* Info.plist */,
+				2628AD9C256E317E00966E4F /* MainMenu.xib */,
 				2628ADA0256E317E00966E4F /* main.m */,
-				2628ADA2256E317E00966E4F /* Luc.entitlements */,
-				2628AD97256E317A00966E4F /* Luc.xcdatamodeld */,
 			);
 			path = Luc;
+			sourceTree = "<group>";
+		};
+		2628ADA9256E321400966E4F /* Misc Files */ = {
+			isa = PBXGroup;
+			children = (
+				2628AD95256E317A00966E4F /* AppDelegate.m */,
+				2628AD94256E317A00966E4F /* AppDelegate.h */,
+				2628ADA2256E317E00966E4F /* Luc.entitlements */,
+				2628AD97256E317A00966E4F /* Luc.xcdatamodeld */,
+				2628AD9A256E317E00966E4F /* Assets.xcassets */,
+			);
+			path = "Misc Files";
+			sourceTree = "<group>";
+		};
+		2628ADAE256E41DA00966E4F /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				2628ADAC256E37B500966E4F /* DefaultShader.metal */,
+				26859EF1256E857D003E71E8 /* DefaultShaderClass.h */,
+				26859EF2256E862D003E71E8 /* DefaultShaderClass.m */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		2628ADAF256E41F200966E4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2628ADA8256E31E400966E4F /* GameView.h */,
+				2628ADAA256E333000966E4F /* GameView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2628ADB0256E421900966E4F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2628ADB1256E424600966E4F /* RendererCore.h */,
+				26DCB196256E42FB0034B370 /* RendererCore.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		26859EED256E8386003E71E8 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				26859EEE256E8476003E71E8 /* Shader.h */,
+				26859EF4256E8787003E71E8 /* Shader.m */,
+				26859EF6256E8B9B003E71E8 /* ShaderLibrary.h */,
+				26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */,
+			);
+			path = Wrappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +206,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26859EF8256E8BD0003E71E8 /* ShaderLibrary.m in Sources */,
 				2628AD99256E317A00966E4F /* Luc.xcdatamodeld in Sources */,
+				26859EF3256E862D003E71E8 /* DefaultShaderClass.m in Sources */,
 				2628ADA1256E317E00966E4F /* main.m in Sources */,
+				2628ADAB256E333000966E4F /* GameView.m in Sources */,
+				2628ADB2256E424600966E4F /* RendererCore.h in Sources */,
 				2628AD96256E317A00966E4F /* AppDelegate.m in Sources */,
+				26DCB197256E42FB0034B370 /* RendererCore.m in Sources */,
+				26859EF5256E8787003E71E8 /* Shader.m in Sources */,
+				2628ADAD256E37B500966E4F /* DefaultShader.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,11 +349,13 @@
 				CODE_SIGN_ENTITLEMENTS = Luc/Luc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = Luc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github-Sausty.Luc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -290,11 +368,13 @@
 				CODE_SIGN_ENTITLEMENTS = Luc/Luc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = Luc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github-Sausty.Luc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
