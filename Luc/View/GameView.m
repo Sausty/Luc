@@ -8,9 +8,11 @@
 
 #import "GameView.h"
 #import "RendererCore.h"
-#include "ShaderLibrary.h"
-#include "DefaultShaderClass.h"
-#include <simd/simd.h>
+#import "ShaderLibrary.h"
+#import "DefaultShaderClass.h"
+#import "VertexDescriptor.h"
+#import "RenderPipelineDescriptor.h"
+#import <simd/simd.h>
 
 typedef struct {
     vector_float3 position;
@@ -24,6 +26,8 @@ typedef struct {
     
     DefaultVertexShader* vertexShader;
     DefaultFragmentShader* fragmentShader;
+    
+    VertexDescriptor* vertexDescriptor;
     
     id<MTLRenderPipelineState> m_RenderPipelineState;
     
@@ -53,34 +57,31 @@ typedef struct {
 
 - (void)createPipelineState
 {
-    id<MTLLibrary> defaultLibrary = [self.device newDefaultLibrary];
-    id<MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"DefaultVertexMain"];
-    id<MTLFunction> fragmentFunction = [defaultLibrary newFunctionWithName:@"DefaultFragmentMain"];
+    vertexDescriptor = [[VertexDescriptor alloc] init];
     
-    m_VertexDescriptor = [[MTLVertexDescriptor alloc] init];
+    DescriptorData* posData = [DescriptorData alloc];
+    posData.format = MTLVertexFormatFloat3;
+    posData.bufferIndex = 0;
+    posData.offset = 0;
     
-    m_VertexDescriptor.attributes[0].format = MTLVertexFormatFloat3;
-    m_VertexDescriptor.attributes[0].bufferIndex = 0;
-    m_VertexDescriptor.attributes[0].offset = 0;
+    DescriptorData* colorData = [DescriptorData alloc];;
+    colorData.format = MTLVertexFormatFloat3;
+    colorData.bufferIndex = 0;
+    colorData.offset = sizeof(vector_float3);
     
-    m_VertexDescriptor.attributes[1].format = MTLVertexFormatFloat4;
-    m_VertexDescriptor.attributes[1].bufferIndex = 0;
-    m_VertexDescriptor.attributes[1].offset = sizeof(vector_float3);
-    
-    m_VertexDescriptor.layouts[0].stride = sizeof(Vertex);
+    [vertexDescriptor addAttribute:posData];
+    [vertexDescriptor addAttribute:colorData];
+    [vertexDescriptor setStride:sizeof(Vertex)];
+    [vertexDescriptor initialiseData];
     
     library = [[ShaderLibrary alloc] init:self.device];
     vertexShader = [[DefaultVertexShader alloc] init:library.library];
     fragmentShader = [[DefaultFragmentShader alloc] init:library.library];
     
-    MTLRenderPipelineDescriptor* descriptor =  [[MTLRenderPipelineDescriptor alloc] init];
-    descriptor.colorAttachments[0].pixelFormat = MTLPixelFormatBGRA8Unorm;
-    descriptor.vertexFunction = [vertexShader metalFunctionWrapper];
-    descriptor.fragmentFunction = [fragmentShader metalFunctionWrapper];
-    descriptor.vertexDescriptor = m_VertexDescriptor;
+    RenderPipelineDescriptor* descriptor = [[RenderPipelineDescriptor alloc] initWithShadersAndDescriptor:vertexShader :fragmentShader :vertexDescriptor];
     
     NSError* error;
-    m_RenderPipelineState = [self.device newRenderPipelineStateWithDescriptor:descriptor error:&error];
+    m_RenderPipelineState = [self.device newRenderPipelineStateWithDescriptor:[descriptor renderPipelineDescriptor] error:&error];
     NSAssert(m_RenderPipelineState, @"Failed to create render pipeline state");
 }
 

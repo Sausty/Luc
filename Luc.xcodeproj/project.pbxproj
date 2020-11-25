@@ -15,6 +15,8 @@
 		2628ADAB256E333000966E4F /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2628ADAA256E333000966E4F /* GameView.m */; };
 		2628ADAD256E37B500966E4F /* DefaultShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2628ADAC256E37B500966E4F /* DefaultShader.metal */; };
 		2628ADB2256E424600966E4F /* RendererCore.h in Sources */ = {isa = PBXBuildFile; fileRef = 2628ADB1256E424600966E4F /* RendererCore.h */; };
+		2640114D256EAFCE00A060D0 /* VertexDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2640114C256EAFCE00A060D0 /* VertexDescriptor.m */; };
+		26401153256EBA6A00A060D0 /* RenderPipelineDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26401151256EBA6A00A060D0 /* RenderPipelineDescriptor.m */; };
 		26859EF3256E862D003E71E8 /* DefaultShaderClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF2256E862D003E71E8 /* DefaultShaderClass.m */; };
 		26859EF5256E8787003E71E8 /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF4256E8787003E71E8 /* Shader.m */; };
 		26859EF8256E8BD0003E71E8 /* ShaderLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */; };
@@ -35,12 +37,16 @@
 		2628ADAA256E333000966E4F /* GameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
 		2628ADAC256E37B500966E4F /* DefaultShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DefaultShader.metal; sourceTree = "<group>"; };
 		2628ADB1256E424600966E4F /* RendererCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendererCore.h; sourceTree = "<group>"; };
+		2640114C256EAFCE00A060D0 /* VertexDescriptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VertexDescriptor.m; sourceTree = "<group>"; };
+		26401151256EBA6A00A060D0 /* RenderPipelineDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderPipelineDescriptor.m; sourceTree = "<group>"; };
+		26401152256EBA6A00A060D0 /* RenderPipelineDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderPipelineDescriptor.h; sourceTree = "<group>"; };
 		26859EEE256E8476003E71E8 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		26859EF1256E857D003E71E8 /* DefaultShaderClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultShaderClass.h; sourceTree = "<group>"; };
 		26859EF2256E862D003E71E8 /* DefaultShaderClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultShaderClass.m; sourceTree = "<group>"; };
 		26859EF4256E8787003E71E8 /* Shader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shader.m; sourceTree = "<group>"; };
 		26859EF6256E8B9B003E71E8 /* ShaderLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderLibrary.h; sourceTree = "<group>"; };
 		26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShaderLibrary.m; sourceTree = "<group>"; };
+		26ABB137256EAD0900F18453 /* VertexDescriptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexDescriptor.h; sourceTree = "<group>"; };
 		26DCB196256E42FB0034B370 /* RendererCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendererCore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,10 +135,14 @@
 		26859EED256E8386003E71E8 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
+				26401152256EBA6A00A060D0 /* RenderPipelineDescriptor.h */,
+				26401151256EBA6A00A060D0 /* RenderPipelineDescriptor.m */,
 				26859EEE256E8476003E71E8 /* Shader.h */,
 				26859EF4256E8787003E71E8 /* Shader.m */,
 				26859EF6256E8B9B003E71E8 /* ShaderLibrary.h */,
 				26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */,
+				26ABB137256EAD0900F18453 /* VertexDescriptor.h */,
+				2640114C256EAFCE00A060D0 /* VertexDescriptor.m */,
 			);
 			path = Wrappers;
 			sourceTree = "<group>";
@@ -215,6 +225,8 @@
 				2628AD96256E317A00966E4F /* AppDelegate.m in Sources */,
 				26DCB197256E42FB0034B370 /* RendererCore.m in Sources */,
 				26859EF5256E8787003E71E8 /* Shader.m in Sources */,
+				2640114D256EAFCE00A060D0 /* VertexDescriptor.m in Sources */,
+				26401153256EBA6A00A060D0 /* RenderPipelineDescriptor.m in Sources */,
 				2628ADAD256E37B500966E4F /* DefaultShader.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
