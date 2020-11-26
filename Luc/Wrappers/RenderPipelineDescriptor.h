@@ -13,7 +13,7 @@
 
 @interface RenderPipelineDescriptor : NSObject
 
-@property MTLRenderPipelineDescriptor* renderPipelineDescriptor;
+@property MTLRenderPipelineDescriptor* _Nonnull renderPipelineDescriptor;
 
 - (nonnull instancetype)initWithShadersAndDescriptor:(nonnull Shader*)vertexShader:(nonnull Shader*)fragmentShader:(nonnull VertexDescriptor*)vertexDescriptor;
 

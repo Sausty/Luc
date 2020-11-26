@@ -31,12 +31,12 @@
     [_fragmentShaders insertValue:shader inPropertyWithKey:shader.shaderName];
 }
 
-- (Shader*)getVertexShader:(NSString*)key
+- (nonnull Shader*)getVertexShader:(NSString*)key
 {
     return [_vertexShaders valueForKey:key];
 }
 
-- (Shader*)getFragmentShader:(NSString*)key
+- (nonnull Shader*)getFragmentShader:(NSString*)key
 {
     return [_fragmentShaders valueForKey:key];
 }

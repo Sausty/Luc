@@ -10,9 +10,8 @@
 
 @interface RendererCore : NSObject
 
-@property id<MTLDevice> _Nonnull device;
-@property id<MTLCommandQueue> _Nonnull commandQueue;
-
 - (nonnull instancetype)InitWithDevice:(id<MTLDevice>_Nonnull)device;
++ (nonnull id<MTLDevice>)device;
++ (nonnull id<MTLCommandQueue>)commandQueue;
 
 @end

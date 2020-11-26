@@ -8,17 +8,27 @@
 
 #import "RendererCore.h"
 
-@implementation RendererCore
-{
-    
-}
+static id<MTLDevice> device;
+static id<MTLCommandQueue> commandQueue;
 
-- (nonnull instancetype)InitWithDevice:(id<MTLDevice>)device
+@implementation RendererCore
+
+- (nonnull instancetype)InitWithDevice:(id<MTLDevice>)dEvice
 {
-    _device = device;
-    _commandQueue = [_device newCommandQueue];
+    device = dEvice;
+    commandQueue = [device newCommandQueue];
     
     return self;
+}
+
++ (nonnull id<MTLDevice>)device
+{
+    return device;
+}
+
++ (nonnull id<MTLCommandQueue>)commandQueue
+{
+    return commandQueue;
 }
 
 @end

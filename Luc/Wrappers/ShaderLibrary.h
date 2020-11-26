@@ -19,7 +19,7 @@
 - (nonnull instancetype)init:(nonnull id<MTLDevice>)device;
 - (void)addVertexShader:(nonnull Shader*)shader;
 - (void)addFragmentShader:(nonnull Shader*)shader;
-- (Shader*)getVertexShader:(nonnull NSString*)key;
-- (Shader*)getFragmentShader:(nonnull NSString*)key;
+- (nonnull Shader*)getVertexShader:(nonnull NSString*)key;
+- (nonnull Shader*)getFragmentShader:(nonnull NSString*)key;
 
 @end

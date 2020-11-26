@@ -12,27 +12,24 @@
 #import "DefaultShaderClass.h"
 #import "VertexDescriptor.h"
 #import "RenderPipelineDescriptor.h"
+#import "RenderPipelineState.h"
+#import "Mesh.h"
+#import "Renderer.h"
+#import "MeshFactory.h"
 #import <simd/simd.h>
-
-typedef struct {
-    vector_float3 position;
-    vector_float4 color;
-} Vertex;
 
 @implementation GameView
 {
     RendererCore* engine;
-    ShaderLibrary* library;
     
+    ShaderLibrary* library;
     DefaultVertexShader* vertexShader;
     DefaultFragmentShader* fragmentShader;
     
     VertexDescriptor* vertexDescriptor;
+    RenderPipelineState* renderPipelineState;
     
-    id<MTLRenderPipelineState> m_RenderPipelineState;
-    
-    id<MTLBuffer> m_VertexBuffer;
-    MTLVertexDescriptor* m_VertexDescriptor;
+    Mesh* triangleMesh;
 }
 
 - (nonnull instancetype)initWithCoder:(NSCoder *)coder
@@ -50,6 +47,7 @@ typedef struct {
         engine = [[RendererCore alloc] InitWithDevice:self.device];
         
         [self createPipelineState];
+        [self createVertexBuffer];
     }
     
     return self;
@@ -80,14 +78,13 @@ typedef struct {
     
     RenderPipelineDescriptor* descriptor = [[RenderPipelineDescriptor alloc] initWithShadersAndDescriptor:vertexShader :fragmentShader :vertexDescriptor];
     
-    NSError* error;
-    m_RenderPipelineState = [self.device newRenderPipelineStateWithDescriptor:[descriptor renderPipelineDescriptor] error:&error];
-    NSAssert(m_RenderPipelineState, @"Failed to create render pipeline state");
+    renderPipelineState = [[RenderPipelineState alloc] initWithDeviceAndDescriptor:self.device :descriptor];
 }
 
 - (void)createVertexBuffer
 {
-    
+    vector_float3 color = {1, 0, 1};
+    triangleMesh = [MeshFactory BuildTriangle:color];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -98,22 +95,12 @@ typedef struct {
     NSAssert(drawable, @"Nothing to draw!");
     NSAssert(descriptor, @"No current render pass descriptor!");
     
-    id<MTLCommandBuffer> commandBuffer = [engine.commandQueue commandBuffer];
+    id<MTLCommandBuffer> commandBuffer = [RendererCore.commandQueue commandBuffer];
     id<MTLRenderCommandEncoder> commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor:descriptor];
     
-    Vertex vertices[] = {
-        {{0, 1, 0}, {1, 0, 0, 1}},
-        {{-1, -1, 0}, {0, 1, 0, 1}},
-        {{1, -1, 0}, {0, 0, 1, 1}}
-    };
+    [commandEncoder setRenderPipelineState:[renderPipelineState renderPipelineState]];
     
-    size_t length = (sizeof vertices) / (sizeof vertices[0]);
-    m_VertexBuffer = [self.device newBufferWithBytes:vertices length:length * sizeof(Vertex) options:NULL];
-    
-    [commandEncoder setRenderPipelineState:m_RenderPipelineState];
-    
-    [commandEncoder setVertexBuffer:m_VertexBuffer offset:0 atIndex:0];
-    [commandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:sizeof(vertices)];
+    [triangleMesh render:commandEncoder];
     
     [commandEncoder endEncoding];
     [commandBuffer presentDrawable:drawable];
