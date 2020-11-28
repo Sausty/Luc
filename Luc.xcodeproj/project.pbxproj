@@ -24,6 +24,9 @@
 		26859EF5256E8787003E71E8 /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF4256E8787003E71E8 /* Shader.m */; };
 		26859EF8256E8BD0003E71E8 /* ShaderLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */; };
 		2690E14E2572B5B30088A7BA /* VertexBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690E14D2572B5B30088A7BA /* VertexBuffer.m */; };
+		2690E1522572BD9B0088A7BA /* RendererPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690E1512572BD9B0088A7BA /* RendererPreferences.m */; };
+		2690E1562572C0540088A7BA /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690E1552572C0540088A7BA /* Transform.m */; };
+		2690E15F2572CDAC0088A7BA /* Scene2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690E15E2572CDAC0088A7BA /* Scene2D.m */; };
 		26A1C7AC2572AEBB00E3A57B /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C7AB2572AEBB00E3A57B /* Scene.m */; };
 		26DCB197256E42FB0034B370 /* RendererCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DCB196256E42FB0034B370 /* RendererCore.m */; };
 		26F18477256F84020018605E /* MeshFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F18476256F84020018605E /* MeshFactory.m */; };
@@ -59,6 +62,12 @@
 		26859EF6256E8B9B003E71E8 /* ShaderLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderLibrary.h; sourceTree = "<group>"; };
 		26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShaderLibrary.m; sourceTree = "<group>"; };
 		2690E14D2572B5B30088A7BA /* VertexBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VertexBuffer.m; sourceTree = "<group>"; };
+		2690E1502572BC0A0088A7BA /* RendererPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendererPreferences.h; sourceTree = "<group>"; };
+		2690E1512572BD9B0088A7BA /* RendererPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendererPreferences.m; sourceTree = "<group>"; };
+		2690E1542572C02B0088A7BA /* Transform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
+		2690E1552572C0540088A7BA /* Transform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Transform.m; sourceTree = "<group>"; };
+		2690E15D2572CD780088A7BA /* Scene2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene2D.h; sourceTree = "<group>"; };
+		2690E15E2572CDAC0088A7BA /* Scene2D.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Scene2D.m; sourceTree = "<group>"; };
 		26A1C7A92572ABC800E3A57B /* VertexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexBuffer.h; sourceTree = "<group>"; };
 		26A1C7AA2572AE4400E3A57B /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		26A1C7AB2572AEBB00E3A57B /* Scene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
@@ -98,6 +107,7 @@
 		2628AD93256E317A00966E4F /* Luc */ = {
 			isa = PBXGroup;
 			children = (
+				2690E1532572BFE90088A7BA /* Maths */,
 				2640115F256EC67E00A060D0 /* GameObject */,
 				2640115B256EC2ED00A060D0 /* Renderer */,
 				26401157256EBF0E00A060D0 /* Scene */,
@@ -140,6 +150,8 @@
 			children = (
 				2628ADA8256E31E400966E4F /* GameView.h */,
 				2628ADAA256E333000966E4F /* GameView.m */,
+				2690E15D2572CD780088A7BA /* Scene2D.h */,
+				2690E15E2572CDAC0088A7BA /* Scene2D.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +181,8 @@
 			children = (
 				2640115C256EC2F600A060D0 /* Renderer.h */,
 				2640115D256EC33100A060D0 /* Renderer.m */,
+				2690E1502572BC0A0088A7BA /* RendererPreferences.h */,
+				2690E1512572BD9B0088A7BA /* RendererPreferences.m */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -199,6 +213,15 @@
 				2690E14D2572B5B30088A7BA /* VertexBuffer.m */,
 			);
 			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		2690E1532572BFE90088A7BA /* Maths */ = {
+			isa = PBXGroup;
+			children = (
+				2690E1542572C02B0088A7BA /* Transform.h */,
+				2690E1552572C0540088A7BA /* Transform.m */,
+			);
+			path = Maths;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +293,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2690E1522572BD9B0088A7BA /* RendererPreferences.m in Sources */,
 				26859EF8256E8BD0003E71E8 /* ShaderLibrary.m in Sources */,
+				2690E1562572C0540088A7BA /* Transform.m in Sources */,
+				2690E15F2572CDAC0088A7BA /* Scene2D.m in Sources */,
 				2628AD99256E317A00966E4F /* Luc.xcdatamodeld in Sources */,
 				26859EF3256E862D003E71E8 /* DefaultShaderClass.m in Sources */,
 				2628ADA1256E317E00966E4F /* main.m in Sources */,

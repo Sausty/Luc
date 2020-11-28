@@ -22,13 +22,53 @@
         {{0.5, -0.5, 0}, {color.x, color.y, color.z, 1}}
     };
     
-    VertexBuffer* meshBuffer = [[VertexBuffer alloc] init:vertices :(sizeof vertices) * sizeof(Vertex) :0];
+    VertexBuffer* meshBuffer = [[VertexBuffer alloc] init:vertices :(sizeof vertices) :0];
     
-    result = [result init];
     [result setMeshVBO:meshBuffer];
     
     return result;
 }
 
++ (nonnull Mesh*)BuildQuad:(vector_float3)color
+{
+    Mesh* result = [[Mesh alloc] init];
+    
+    Vertex vertices[] = {
+        {{0.5, 0.5, 0}, {color.x, color.y, color.z, 1}},
+        {{-0.5, 0.5, 0}, {color.x, color.y, color.z, 1}},
+        {{-0.5, -0.5, 0}, {color.x, color.y, color.z, 1}},
+        
+        {{0.5, 0.5, 0}, {color.x, color.y, color.z, 1}},
+        {{-0.5, -0.5, 0}, {color.x, color.y, color.z, 1}},
+        {{0.5, -0.5, 0}, {color.x, color.y, color.z, 1}}
+    };
+    
+    VertexBuffer* meshBuffer = [[VertexBuffer alloc] init:vertices :(sizeof vertices) :0];
+    
+    [result setMeshVBO:meshBuffer];
+    
+    return result;
+}
+
++ (nonnull Mesh*)BuildRainbowQuad
+{
+    Mesh* result = [[Mesh alloc] init];
+    
+    Vertex vertices[] = {
+        {{0.5, 0.5, 0}, {1, 0, 0, 1}},
+        {{-0.5, 0.5, 0}, {0, 1, 0, 1}},
+        {{-0.5, -0.5, 0}, {0, 0, 1, 1}},
+        
+        {{0.5, 0.5, 0}, {1, 0, 0, 1}},
+        {{-0.5, -0.5, 0}, {0, 0, 1, 1}},
+        {{0.5, -0.5, 0}, {1, 0, 1, 1}}
+    };
+    
+    VertexBuffer* meshBuffer = [[VertexBuffer alloc] init:vertices :(sizeof vertices) :0];
+
+    [result setMeshVBO:meshBuffer];
+    
+    return result;
+}
 
 @end

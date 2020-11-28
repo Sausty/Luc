@@ -18,5 +18,6 @@ typedef struct {
 
 + (nonnull Mesh*)BuildTriangle:(vector_float3)color;
 + (nonnull Mesh*)BuildQuad:(vector_float3)color;
++ (nonnull Mesh*)BuildRainbowQuad;
 
 @end

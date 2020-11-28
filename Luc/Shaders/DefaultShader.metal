@@ -19,10 +19,15 @@ struct FragmentData {
     float4 color;
 };
 
-vertex FragmentData DefaultVertexMain(const VertexIn vIn [[ stage_in ]]) {
+struct ModelConstants {
+    float4x4 modelTransform;
+};
+
+vertex FragmentData DefaultVertexMain(const VertexIn vIn [[ stage_in ]],
+                                      constant ModelConstants &modelConstants [[ buffer(1) ]]) {
     FragmentData fd;
     
-    fd.position = float4(vIn.position, 1);
+    fd.position = modelConstants.modelTransform * float4(vIn.position, 1);
     fd.color = vIn.color;
     
     return fd;

@@ -16,7 +16,7 @@
 #import "Mesh.h"
 #import "Renderer.h"
 #import "MeshFactory.h"
-#import "Scene.h"
+#import "Scene2D.h"
 #import <simd/simd.h>
 
 @implementation GameView
@@ -24,7 +24,7 @@
     RendererCore* engine;
     Renderer* renderer;
     
-    Scene* defaultScene;
+    Scene2D* defaultScene;
     
     ShaderLibrary* library;
     DefaultVertexShader* vertexShader;
@@ -48,6 +48,8 @@
         
         self.colorPixelFormat = MTLPixelFormatBGRA8Unorm;
         
+        self.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
+        
         engine = [[RendererCore alloc] InitWithDevice:self.device];
         renderer = [[Renderer alloc] init];
         
@@ -66,8 +68,8 @@
 
 - (void)createDefaultScene
 {
-    defaultScene = [[Scene alloc] init];
-    [defaultScene addGameObject:triangleMesh];
+    defaultScene = [[Scene2D alloc] init];
+    [defaultScene addGameObject:triangleMesh :@"Quad"];
     [defaultScene setRenderPipelineState:renderPipelineState];
 }
 
@@ -101,8 +103,7 @@
 
 - (void)createVertexBuffer
 {
-    vector_float3 color = {1, 0, 1};
-    triangleMesh = [MeshFactory BuildTriangle:color];
+    triangleMesh = [MeshFactory BuildRainbowQuad];
 }
 
 @end

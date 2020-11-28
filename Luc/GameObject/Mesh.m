@@ -15,6 +15,8 @@
 {
     self = [super init];
     
+    _transform = [[Transform alloc] init];
+    
     return self;
 }
 
@@ -26,7 +28,14 @@
 - (void)render;
 {
     [_meshVBO bind];
+    matrix_float4x4 transform = [_transform getMatrix];
+    [RendererCore.currentRenderCommandEncoder setVertexBytes:&transform length:sizeof(_transform.TransformMatrix) atIndex:1];
     [RendererCore.currentRenderCommandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.meshVBO.bufferSize];
+}
+
+- (nonnull Transform*)getTransform
+{
+    return _transform;
 }
 
 @end

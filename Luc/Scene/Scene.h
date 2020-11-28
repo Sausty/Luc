@@ -13,12 +13,14 @@
 
 @interface Scene : NSObject
 
-@property NSMutableArray* _Nonnull sceneGameObjects;
+@property NSMutableDictionary<NSString*, Mesh*>* _Nonnull sceneGameObjects;
 @property RenderPipelineState* _Nonnull sceneRenderPipelineState;
 
 - (nonnull instancetype)init;
+
 - (void)setRenderPipelineState:(RenderPipelineState * _Nonnull)sceneRenderPipelineState;
-- (void)addGameObject:(nonnull Mesh*)mesh;
+- (void)addGameObject:(nonnull Mesh*)mesh:(NSString*)tag;
 - (void)render;
+- (void)update;
 
 @end

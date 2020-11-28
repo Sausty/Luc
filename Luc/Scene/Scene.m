@@ -15,7 +15,7 @@
 {
     self = [super init];
     
-    self.sceneGameObjects = [[NSMutableArray alloc] init];
+    self.sceneGameObjects = [[NSMutableDictionary alloc] init];
     
     return self;
 }
@@ -25,19 +25,27 @@
     self.sceneRenderPipelineState = sceneRenderPipelineState;
 }
 
-- (void)addGameObject:(nonnull Mesh*)mesh
+- (void)addGameObject:(nonnull Mesh*)mesh:(NSString*)tag
 {
-    [_sceneGameObjects addObject:mesh];
+    _sceneGameObjects[tag] = mesh;
 }
 
 - (void)render;
 {
     [RendererCore.currentRenderCommandEncoder setRenderPipelineState:self.sceneRenderPipelineState.renderPipelineState];
-    NSUInteger size = [_sceneGameObjects count];
-    for (NSUInteger i = 0; i < size; i++)
+    
+    [self update];
+    
+    for (NSString* key in _sceneGameObjects)
     {
-        [_sceneGameObjects[i] render];
+        Mesh* value = _sceneGameObjects[key];
+        [value render];
     }
+}
+
+- (void)update
+{
+    
 }
 
 @end

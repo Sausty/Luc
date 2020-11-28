@@ -16,6 +16,7 @@
     
     self.renderPipelineDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
     self.renderPipelineDescriptor.colorAttachments[0].pixelFormat = MTLPixelFormatBGRA8Unorm;
+    self.renderPipelineDescriptor.depthAttachmentPixelFormat = MTLPixelFormatDepth32Float;
     self.renderPipelineDescriptor.vertexFunction = [vertexShader metalFunctionWrapper];
     self.renderPipelineDescriptor.fragmentFunction = [fragmentShader metalFunctionWrapper];
     self.renderPipelineDescriptor.vertexDescriptor = [vertexDescriptor vertexDescriptor];

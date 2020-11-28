@@ -7,15 +7,19 @@
 //
 
 #import "VertexBuffer.h"
+#import "Transform.h"
 
 @import MetalKit;
 
 @interface Mesh : NSObject
 
-@property VertexBuffer* meshVBO;
+@property VertexBuffer* _Nonnull meshVBO;
+@property Transform* _Nonnull transform;
 
 - (nonnull instancetype)init;
 - (void)addVertexBuffer:(nonnull VertexBuffer*)vbo;
 - (void)render;
+
+- (nonnull Transform*)getTransform;
 
 @end

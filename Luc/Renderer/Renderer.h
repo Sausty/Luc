@@ -14,6 +14,7 @@
 
 @property Scene* _Nonnull activeRendererScene;
 
+- (nonnull instancetype)init;
 - (void)setActiveScene:(nonnull Scene*)scene;
 - (void)mtkView:(MTKView *)view drawableSizeWillChange:(CGSize)size;
 - (void)drawInMTKView:(MTKView *)view;

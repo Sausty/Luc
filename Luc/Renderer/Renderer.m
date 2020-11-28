@@ -8,10 +8,26 @@
 
 #import "Renderer.h"
 #import "RendererCore.h"
+#import "RendererPreferences.h"
 
 #include "Mesh.h"
 
 @implementation Renderer
+{
+    id<MTLDepthStencilState> depthStencil;
+}
+
+- (nonnull instancetype)init
+{
+    self = [super init];
+    
+    MTLDepthStencilDescriptor* descriptor = [[MTLDepthStencilDescriptor alloc] init];
+    descriptor.depthWriteEnabled = YES;
+    descriptor.depthCompareFunction = MTLCompareFunctionLess;
+    depthStencil = [RendererCore.device newDepthStencilStateWithDescriptor:descriptor];
+    
+    return self;
+}
 
 - (void)setActiveScene:(nonnull Scene*)scene
 {
@@ -33,7 +49,10 @@
     
     [RendererCore createCommandBuffer];
     [RendererCore createRenderCommandEncoder:descriptor];
-
+    [RendererCore.currentRenderCommandEncoder setDepthStencilState:depthStencil];
+    
+    [RendererPreferences SetDrawMode:DrawModeFill];
+    [RendererPreferences BindDrawMode];
     [_activeRendererScene render];
     
     [RendererCore.currentRenderCommandEncoder endEncoding];
