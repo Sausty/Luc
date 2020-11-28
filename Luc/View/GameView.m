@@ -47,7 +47,6 @@
         self.clearColor = MTLClearColorMake(0.1, 0.1, 0.1, 1.0);
         
         self.colorPixelFormat = MTLPixelFormatBGRA8Unorm;
-        
         self.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
         
         engine = [[RendererCore alloc] InitWithDevice:self.device];
