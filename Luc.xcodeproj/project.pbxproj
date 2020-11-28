@@ -20,6 +20,7 @@
 		26401156256EBD0C00A060D0 /* RenderPipelineState.m in Sources */ = {isa = PBXBuildFile; fileRef = 26401155256EBD0C00A060D0 /* RenderPipelineState.m */; };
 		2640115A256EBFBC00A060D0 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 26401159256EBFBC00A060D0 /* Mesh.m */; };
 		2640115E256EC33100A060D0 /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2640115D256EC33100A060D0 /* Renderer.m */; };
+		267DBF9A2572E1A200901695 /* Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DBF992572E1A200901695 /* Keyboard.m */; };
 		26859EF3256E862D003E71E8 /* DefaultShaderClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF2256E862D003E71E8 /* DefaultShaderClass.m */; };
 		26859EF5256E8787003E71E8 /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF4256E8787003E71E8 /* Shader.m */; };
 		26859EF8256E8BD0003E71E8 /* ShaderLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 26859EF7256E8BD0003E71E8 /* ShaderLibrary.m */; };
@@ -55,6 +56,9 @@
 		26401159256EBFBC00A060D0 /* Mesh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
 		2640115C256EC2F600A060D0 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		2640115D256EC33100A060D0 /* Renderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		267DBF972572DBFA00901695 /* KeyCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodes.h; sourceTree = "<group>"; };
+		267DBF982572DD7A00901695 /* Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
+		267DBF992572E1A200901695 /* Keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keyboard.m; sourceTree = "<group>"; };
 		26859EEE256E8476003E71E8 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		26859EF1256E857D003E71E8 /* DefaultShaderClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultShaderClass.h; sourceTree = "<group>"; };
 		26859EF2256E862D003E71E8 /* DefaultShaderClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultShaderClass.m; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		2628ADB0256E421900966E4F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				267DBF952572DB7E00901695 /* Input */,
 				2628ADB1256E424600966E4F /* RendererCore.h */,
 				26DCB196256E42FB0034B370 /* RendererCore.m */,
 			);
@@ -194,6 +199,16 @@
 				26401159256EBFBC00A060D0 /* Mesh.m */,
 			);
 			path = GameObject;
+			sourceTree = "<group>";
+		};
+		267DBF952572DB7E00901695 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				267DBF972572DBFA00901695 /* KeyCodes.h */,
+				267DBF982572DD7A00901695 /* Keyboard.h */,
+				267DBF992572E1A200901695 /* Keyboard.m */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		26859EED256E8386003E71E8 /* Wrappers */ = {
@@ -305,6 +320,7 @@
 				2640115A256EBFBC00A060D0 /* Mesh.m in Sources */,
 				2628AD96256E317A00966E4F /* AppDelegate.m in Sources */,
 				26A1C7AC2572AEBB00E3A57B /* Scene.m in Sources */,
+				267DBF9A2572E1A200901695 /* Keyboard.m in Sources */,
 				2640115E256EC33100A060D0 /* Renderer.m in Sources */,
 				26DCB197256E42FB0034B370 /* RendererCore.m in Sources */,
 				26859EF5256E8787003E71E8 /* Shader.m in Sources */,

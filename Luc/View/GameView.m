@@ -17,6 +17,7 @@
 #import "Renderer.h"
 #import "MeshFactory.h"
 #import "Scene2D.h"
+#import "Keyboard.h"
 #import <simd/simd.h>
 
 @implementation GameView
@@ -33,7 +34,7 @@
     VertexDescriptor* vertexDescriptor;
     RenderPipelineState* renderPipelineState;
     
-    Mesh* triangleMesh;
+    Mesh* quadMesh;
 }
 
 - (nonnull instancetype)initWithCoder:(NSCoder *)coder
@@ -48,6 +49,8 @@
         
         self.colorPixelFormat = MTLPixelFormatBGRA8Unorm;
         self.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
+        
+        [Keyboard InitKeyboard];
         
         engine = [[RendererCore alloc] InitWithDevice:self.device];
         renderer = [[Renderer alloc] init];
@@ -68,7 +71,7 @@
 - (void)createDefaultScene
 {
     defaultScene = [[Scene2D alloc] init];
-    [defaultScene addGameObject:triangleMesh :@"Quad"];
+    [defaultScene addGameObject:quadMesh :@"Quad"];
     [defaultScene setRenderPipelineState:renderPipelineState];
 }
 
@@ -102,7 +105,22 @@
 
 - (void)createVertexBuffer
 {
-    triangleMesh = [MeshFactory BuildRainbowQuad];
+    quadMesh = [MeshFactory BuildRainbowQuad];
+}
+
+- (void)keyDown:(NSEvent *)event
+{
+    [Keyboard SetKeyPressed:event.keyCode :YES];
+}
+
+- (void)keyUp:(NSEvent *)event
+{
+    [Keyboard SetKeyPressed:event.keyCode :NO];
+}
+
+- (BOOL)acceptsFirstResponder
+{
+    return YES;
 }
 
 @end
