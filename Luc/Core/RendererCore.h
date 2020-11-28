@@ -11,7 +11,14 @@
 @interface RendererCore : NSObject
 
 - (nonnull instancetype)InitWithDevice:(id<MTLDevice>_Nonnull)device;
+
 + (nonnull id<MTLDevice>)device;
 + (nonnull id<MTLCommandQueue>)commandQueue;
+
++ (void)createCommandBuffer;
++ (nonnull id<MTLCommandBuffer>)currentCommandBuffer;
+
++ (void)createRenderCommandEncoder:(nonnull MTLRenderPassDescriptor*)descriptor;
++ (nonnull id<MTLRenderCommandEncoder>)currentRenderCommandEncoder;
 
 @end

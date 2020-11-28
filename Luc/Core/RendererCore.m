@@ -10,6 +10,8 @@
 
 static id<MTLDevice> device;
 static id<MTLCommandQueue> commandQueue;
+static id<MTLCommandBuffer> currentCommandBuffer;
+static id<MTLRenderCommandEncoder> currentRenderCommandEncoder;
 
 @implementation RendererCore
 
@@ -29,6 +31,26 @@ static id<MTLCommandQueue> commandQueue;
 + (nonnull id<MTLCommandQueue>)commandQueue
 {
     return commandQueue;
+}
+
++ (void)createCommandBuffer
+{
+    currentCommandBuffer = [commandQueue commandBuffer];
+}
+
++ (nonnull id<MTLCommandBuffer>)currentCommandBuffer
+{
+    return currentCommandBuffer;
+}
+
++ (void)createRenderCommandEncoder:(nonnull MTLRenderPassDescriptor*)descriptor
+{
+    currentRenderCommandEncoder = [currentCommandBuffer renderCommandEncoderWithDescriptor:descriptor];
+}
+
++ (nonnull id<MTLRenderCommandEncoder>)currentRenderCommandEncoder
+{
+    return currentRenderCommandEncoder;
 }
 
 @end

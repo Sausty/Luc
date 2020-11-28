@@ -6,14 +6,16 @@
 //  Copyright © 2020 Sausty. All rights reserved.
 //
 
+#import "VertexBuffer.h"
+
 @import MetalKit;
 
 @interface Mesh : NSObject
 
-@property id<MTLBuffer> _Nonnull vertexBuffer;
-@property NSUInteger bufferSize;
+@property VertexBuffer* meshVBO;
 
-- (nonnull instancetype)initWithDeviceAndVertices:(nonnull id<MTLDevice>)device:(nonnull void*)vertices:(NSUInteger)size:(NSUInteger)buffSize;
-- (void)render:(nonnull id<MTLRenderCommandEncoder>)encoder;
+- (nonnull instancetype)init;
+- (void)addVertexBuffer:(nonnull VertexBuffer*)vbo;
+- (void)render;
 
 @end

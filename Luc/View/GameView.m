@@ -16,11 +16,15 @@
 #import "Mesh.h"
 #import "Renderer.h"
 #import "MeshFactory.h"
+#import "Scene.h"
 #import <simd/simd.h>
 
 @implementation GameView
 {
     RendererCore* engine;
+    Renderer* renderer;
+    
+    Scene* defaultScene;
     
     ShaderLibrary* library;
     DefaultVertexShader* vertexShader;
@@ -45,12 +49,26 @@
         self.colorPixelFormat = MTLPixelFormatBGRA8Unorm;
         
         engine = [[RendererCore alloc] InitWithDevice:self.device];
+        renderer = [[Renderer alloc] init];
+        
+        self.delegate = renderer;
         
         [self createPipelineState];
         [self createVertexBuffer];
+        [self createDefaultScene];
+        
+        [renderer setActiveScene:defaultScene];
+        
     }
     
     return self;
+}
+
+- (void)createDefaultScene
+{
+    defaultScene = [[Scene alloc] init];
+    [defaultScene addGameObject:triangleMesh];
+    [defaultScene setRenderPipelineState:renderPipelineState];
 }
 
 - (void)createPipelineState
@@ -85,26 +103,6 @@
 {
     vector_float3 color = {1, 0, 1};
     triangleMesh = [MeshFactory BuildTriangle:color];
-}
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    id<CAMetalDrawable> drawable = self.currentDrawable;
-    MTLRenderPassDescriptor* descriptor = self.currentRenderPassDescriptor;
-
-    NSAssert(drawable, @"Nothing to draw!");
-    NSAssert(descriptor, @"No current render pass descriptor!");
-    
-    id<MTLCommandBuffer> commandBuffer = [RendererCore.commandQueue commandBuffer];
-    id<MTLRenderCommandEncoder> commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor:descriptor];
-    
-    [commandEncoder setRenderPipelineState:[renderPipelineState renderPipelineState]];
-    
-    [triangleMesh render:commandEncoder];
-    
-    [commandEncoder endEncoding];
-    [commandBuffer presentDrawable:drawable];
-    [commandBuffer commit];
 }
 
 @end

@@ -7,23 +7,26 @@
 //
 
 #import "Mesh.h"
+#import "RendererCore.h"
 
 @implementation Mesh
 
-- (nonnull instancetype)initWithDeviceAndVertices:(nonnull id<MTLDevice>)device:(nonnull void*)vertices:(NSUInteger)size:(NSUInteger)buffSize;
+- (nonnull instancetype)init
 {
     self = [super init];
     
-    self.bufferSize = buffSize;
-    self.vertexBuffer = [device newBufferWithBytes:vertices length:size options:NULL];
-
     return self;
 }
 
-- (void)render:(nonnull id<MTLRenderCommandEncoder>)encoder
+- (void)addVertexBuffer:(nonnull VertexBuffer*)vbo
 {
-    [encoder setVertexBuffer:self.vertexBuffer offset:0 atIndex:0];
-    [encoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.bufferSize];
+    self.meshVBO = vbo;
+}
+
+- (void)render;
+{
+    [_meshVBO bind];
+    [RendererCore.currentRenderCommandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.meshVBO.bufferSize];
 }
 
 @end

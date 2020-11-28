@@ -8,6 +8,7 @@
 
 #import "MeshFactory.h"
 #import "RendererCore.h"
+#import "VertexBuffer.h"
 
 @implementation MeshFactory
 
@@ -21,7 +22,10 @@
         {{0.5, -0.5, 0}, {color.x, color.y, color.z, 1}}
     };
     
-    result = [result initWithDeviceAndVertices:[RendererCore device] :vertices :sizeof(Vertex) * (sizeof vertices) : (sizeof vertices)];
+    VertexBuffer* meshBuffer = [[VertexBuffer alloc] init:vertices :(sizeof vertices) * sizeof(Vertex) :0];
+    
+    result = [result init];
+    [result setMeshVBO:meshBuffer];
     
     return result;
 }

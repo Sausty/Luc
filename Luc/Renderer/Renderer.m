@@ -13,6 +13,11 @@
 
 @implementation Renderer
 
+- (void)setActiveScene:(nonnull Scene*)scene
+{
+    self.activeRendererScene = scene;
+}
+
 - (void)mtkView:(MTKView *)view drawableSizeWillChange:(CGSize)size
 {
     // Handle resizing
@@ -20,7 +25,20 @@
 
 - (void)drawInMTKView:(MTKView *)view
 {
+    id<CAMetalDrawable> drawable = view.currentDrawable;
+    MTLRenderPassDescriptor* descriptor = view.currentRenderPassDescriptor;
+
+    NSAssert(drawable, @"Nothing to draw!");
+    NSAssert(descriptor, @"No current render pass descriptor!");
     
+    [RendererCore createCommandBuffer];
+    [RendererCore createRenderCommandEncoder:descriptor];
+
+    [_activeRendererScene render];
+    
+    [RendererCore.currentRenderCommandEncoder endEncoding];
+    [RendererCore.currentCommandBuffer presentDrawable:drawable];
+    [RendererCore.currentCommandBuffer commit];
 }
 
 @end
