@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260EFC132573F9F500221ABD /* PerspectiveCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EFC122573F9F500221ABD /* PerspectiveCamera.m */; };
+		260EFC172573FE9000221ABD /* SceneCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EFC162573FE9000221ABD /* SceneCamera.m */; };
+		260EFC192573FEFA00221ABD /* Scene2DCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EFC182573FEFA00221ABD /* Scene2DCamera.m */; };
 		2628AD96256E317A00966E4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2628AD95256E317A00966E4F /* AppDelegate.m */; };
 		2628AD99256E317A00966E4F /* Luc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2628AD97256E317A00966E4F /* Luc.xcdatamodeld */; };
 		2628AD9B256E317E00966E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2628AD9A256E317E00966E4F /* Assets.xcassets */; };
@@ -34,6 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		260EFC112573F9C400221ABD /* PerspectiveCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerspectiveCamera.h; sourceTree = "<group>"; };
+		260EFC122573F9F500221ABD /* PerspectiveCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerspectiveCamera.m; sourceTree = "<group>"; };
+		260EFC142573FDA800221ABD /* SceneCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneCamera.h; sourceTree = "<group>"; };
+		260EFC152573FE6100221ABD /* Scene2DCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene2DCamera.h; sourceTree = "<group>"; };
+		260EFC162573FE9000221ABD /* SceneCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneCamera.m; sourceTree = "<group>"; };
+		260EFC182573FEFA00221ABD /* Scene2DCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Scene2DCamera.m; sourceTree = "<group>"; };
 		2628AD91256E317A00966E4F /* Luc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2628AD94256E317A00966E4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2628AD95256E317A00966E4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -156,6 +165,8 @@
 				2628ADAA256E333000966E4F /* GameView.m */,
 				2690E15D2572CD780088A7BA /* Scene2D.h */,
 				2690E15E2572CDAC0088A7BA /* Scene2D.m */,
+				260EFC152573FE6100221ABD /* Scene2DCamera.h */,
+				260EFC182573FEFA00221ABD /* Scene2DCamera.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +188,10 @@
 				26F18476256F84020018605E /* MeshFactory.m */,
 				26A1C7AA2572AE4400E3A57B /* Scene.h */,
 				26A1C7AB2572AEBB00E3A57B /* Scene.m */,
+				260EFC112573F9C400221ABD /* PerspectiveCamera.h */,
+				260EFC122573F9F500221ABD /* PerspectiveCamera.m */,
+				260EFC142573FDA800221ABD /* SceneCamera.h */,
+				260EFC162573FE9000221ABD /* SceneCamera.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -325,11 +340,14 @@
 				26DCB197256E42FB0034B370 /* RendererCore.m in Sources */,
 				26859EF5256E8787003E71E8 /* Shader.m in Sources */,
 				26401156256EBD0C00A060D0 /* RenderPipelineState.m in Sources */,
+				260EFC192573FEFA00221ABD /* Scene2DCamera.m in Sources */,
 				2640114D256EAFCE00A060D0 /* VertexDescriptor.m in Sources */,
 				26F18477256F84020018605E /* MeshFactory.m in Sources */,
 				26401153256EBA6A00A060D0 /* RenderPipelineDescriptor.m in Sources */,
+				260EFC132573F9F500221ABD /* PerspectiveCamera.m in Sources */,
 				2628ADAD256E37B500966E4F /* DefaultShader.metal in Sources */,
 				2690E14E2572B5B30088A7BA /* VertexBuffer.m in Sources */,
+				260EFC172573FE9000221ABD /* SceneCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

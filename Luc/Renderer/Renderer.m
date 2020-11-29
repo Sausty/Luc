@@ -36,7 +36,7 @@
 
 - (void)mtkView:(MTKView *)view drawableSizeWillChange:(CGSize)size
 {
-    // Handle resizing
+    [self.activeRendererScene SceneResize:size];
 }
 
 - (void)drawInMTKView:(MTKView *)view

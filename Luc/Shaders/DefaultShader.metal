@@ -23,11 +23,16 @@ struct ModelConstants {
     float4x4 modelTransform;
 };
 
+struct SceneConstants {
+    float4x4 sceneCamera;
+};
+
 vertex FragmentData DefaultVertexMain(const VertexIn vIn [[ stage_in ]],
-                                      constant ModelConstants &modelConstants [[ buffer(1) ]]) {
+                                      constant ModelConstants &modelConstants [[ buffer(1) ]],
+                                      constant SceneConstants &sceneConstants [[ buffer(2) ]]) {
     FragmentData fd;
     
-    fd.position = modelConstants.modelTransform * float4(vIn.position, 1);
+    fd.position = sceneConstants.sceneCamera * modelConstants.modelTransform * float4(vIn.position, 1);
     fd.color = vIn.color;
     
     return fd;

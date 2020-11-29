@@ -11,13 +11,18 @@
 
 @implementation Scene
 
-- (nonnull instancetype)init
+- (nonnull instancetype)init:(CGSize)size
 {
     self = [super init];
     
     self.sceneGameObjects = [[NSMutableDictionary alloc] init];
     
     return self;
+}
+
+- (void)SceneResize:(CGSize)size
+{
+    
 }
 
 - (void)setRenderPipelineState:(RenderPipelineState * _Nonnull)sceneRenderPipelineState
@@ -28,6 +33,11 @@
 - (void)addGameObject:(nonnull Mesh*)mesh:(NSString*)tag
 {
     _sceneGameObjects[tag] = mesh;
+}
+
+- (void)beginScene:(matrix_float4x4)viewProjectionCamera
+{
+    [RendererCore.currentRenderCommandEncoder setVertexBytes:&viewProjectionCamera length:sizeof(matrix_float4x4) atIndex:2];
 }
 
 - (void)render;

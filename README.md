@@ -6,6 +6,7 @@ Luc is a metal renderer built using Objective-C. It's main goal is to make a sim
 - Wrappers for most of the Metal objects
 - A scene system
 - Custom shading
+- A camera system (Currently only supports perspective projection)
 
 ## Things I would like to implement :
 
@@ -15,7 +16,6 @@ Luc is a metal renderer built using Objective-C. It's main goal is to make a sim
 - An input system
 
 ### Engine Rendering:
-- Cameras
 - 3D meshes
 - Model loading (.obj, .mtl)
 - Skyboxes

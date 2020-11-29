@@ -10,7 +10,8 @@
 
 @interface Scene2D : Scene
 
-- (nonnull instancetype)init;
+- (nonnull instancetype)init:(CGSize)size;
+- (void)SceneResize:(CGSize)size;
 - (void)update;
 
 @end

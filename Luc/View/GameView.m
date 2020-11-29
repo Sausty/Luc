@@ -70,7 +70,7 @@
 
 - (void)createDefaultScene
 {
-    defaultScene = [[Scene2D alloc] init];
+    defaultScene = [[Scene2D alloc] init:self.drawableSize];
     [defaultScene addGameObject:quadMesh :@"Quad"];
     [defaultScene setRenderPipelineState:renderPipelineState];
 }
